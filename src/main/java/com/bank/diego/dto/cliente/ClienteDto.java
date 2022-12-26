@@ -1,4 +1,4 @@
-package com.bank.diego.dto;
+package com.bank.diego.dto.cliente;
 
 import lombok.Data;
 

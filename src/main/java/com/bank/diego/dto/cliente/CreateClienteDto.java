@@ -1,5 +1,6 @@
-package com.bank.diego.dto;
+package com.bank.diego.dto.cliente;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
@@ -15,7 +16,7 @@ public class CreateClienteDto {
     private String direccion;
     @NotNull(message = "El telefono es obligatorio")
     private String telefono;
-    @NotNull(message = "El nombre es obligatorio")
+    @NotNull(message = "La identificacion es obligatorio")
     private String identificacion;
     @NotNull(message = "El genero es obligatorio")
     private String genero;

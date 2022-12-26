@@ -1,7 +1,6 @@
-package com.bank.diego.mapper;
+package com.bank.diego.mapper.cliente;
 
-import com.bank.diego.dto.ClienteDto;
-import com.bank.diego.dto.CreateClienteDto;
+import com.bank.diego.dto.cliente.CreateClienteDto;
 import com.bank.diego.entities.Cliente;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

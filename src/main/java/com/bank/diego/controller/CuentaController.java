@@ -1,8 +1,8 @@
 package com.bank.diego.controller;
 
-import com.bank.diego.dto.cliente.ClienteDto;
-import com.bank.diego.dto.cliente.CreateClienteDto;
-import com.bank.diego.service.IClienteService;
+import com.bank.diego.dto.cuenta.CreateCuentaDto;
+import com.bank.diego.dto.cuenta.CuentaDto;
+import com.bank.diego.service.ICuentaService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -23,51 +23,61 @@ import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/clientes")
-public class ClienteController {
-
+@RequestMapping("/cuentas")
+public class CuentaController {
 
     @Autowired
-    private IClienteService clienteService;
-    @ApiOperation(value = "Crear cliente")
+    private ICuentaService cuentaService;
+
+    @ApiOperation(value = "Crear cuenta")
     @ApiResponses(
             value = {
                     @ApiResponse(code=200,message="Request completed successfully")
             }
     )
     @PostMapping
-    public ResponseEntity<?> save( @Valid @RequestBody CreateClienteDto createClienteDto){
-        return  new ResponseEntity<>(clienteService.save(createClienteDto),HttpStatus.CREATED);
+    public ResponseEntity<?> save(@Valid @RequestBody  CreateCuentaDto createCuentaDto){
+        return new ResponseEntity<>(cuentaService.save(createCuentaDto), HttpStatus.CREATED);
     }
-
-    @ApiOperation(value = "Listar clientes")
+    @ApiOperation(value = "Obtener cuenta")
     @ApiResponses(
             value = {
                     @ApiResponse(code=200,message="Request completed successfully")
             }
     )
-    @GetMapping()
-    public ResponseEntity<?> findAll(){
-        return new ResponseEntity<>(clienteService.findAll(),HttpStatus.OK);
+    @GetMapping("/{id}")
+    public ResponseEntity<?>findById(@RequestParam Long id){
+        return new ResponseEntity<>(cuentaService.findById(id),HttpStatus.OK);
     }
-    @ApiOperation(value = "borrar clientes")
+    @ApiOperation(value = "Obtener cuentas")
+    @ApiResponses(
+            value = {
+                    @ApiResponse(code=200,message="Request completed successfully")
+            }
+    )
+    @GetMapping
+    public ResponseEntity<?>findAll(){
+        return new ResponseEntity<>(cuentaService.findAll(),HttpStatus.OK);
+    }
+    @ApiOperation(value = "Eliminar cuentas")
     @ApiResponses(
             value = {
                     @ApiResponse(code=200,message="Request completed successfully")
             }
     )
     @DeleteMapping("/{id}")
-    public  ResponseEntity<?> delete(@RequestParam Long id){
-        return new ResponseEntity<>(clienteService.delete(id),HttpStatus.OK);
+    public ResponseEntity<?>delete(@RequestParam Long id){
+        return new ResponseEntity<>(cuentaService.delete(id),HttpStatus.OK);
     }
-    @ApiOperation(value = "actualizar clientes")
+
+    @ApiOperation(value = "actualizar cuentas")
     @ApiResponses(
             value = {
                     @ApiResponse(code=200,message="Request completed successfully")
             }
     )
     @PatchMapping()
-    public   ResponseEntity<?> update(@RequestBody ClienteDto clienteDto){
-        return new ResponseEntity<>(clienteService.update(clienteDto),HttpStatus.OK);
+    public ResponseEntity<?>update(@RequestParam CuentaDto cuenta){
+        return new ResponseEntity<>(cuentaService.update(cuenta),HttpStatus.OK);
     }
 }

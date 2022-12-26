@@ -1,5 +1,6 @@
 package com.bank.diego.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -23,6 +24,7 @@ public class Movimientos implements Serializable {
     private Long movimientoId;
 
     @Column(name = "fecha")
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date fecha;
 
     @Column(name = "tipo_movimiento")

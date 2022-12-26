@@ -1,7 +1,7 @@
 package com.bank.diego.service;
 
-import com.bank.diego.dto.ClienteDto;
-import com.bank.diego.dto.CreateClienteDto;
+import com.bank.diego.dto.cliente.ClienteDto;
+import com.bank.diego.dto.cliente.CreateClienteDto;
 
 import java.util.List;
 

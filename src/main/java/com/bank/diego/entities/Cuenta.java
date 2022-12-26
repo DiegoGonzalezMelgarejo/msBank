@@ -25,7 +25,7 @@ public class Cuenta implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cuentaId;
 
-    @Column(name = "numero_cuenta")
+    @Column(name = "numero_cuenta",unique = true)
     private Long numeroCuenta;
 
     @Column(name = "tipo_cuenta")
