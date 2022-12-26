@@ -14,7 +14,7 @@ public interface ICuentaService {
 
     String delete(Long id);
 
-    CuentaDto update(CuentaDto cuentaDto);
+    CuentaDto update(Long id,CreateCuentaDto createCuentaDto);
 
     List<CuentaDto> findAll();
 }

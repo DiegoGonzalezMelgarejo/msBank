@@ -57,14 +57,14 @@ public class MovimientoService implements IMovimientoService {
 
     @Override
     public List<MovimientoDto> findAll() {
-        return movimientoRepository.findAll().parallelStream().map(MovimientoMapper.MAPPER::movimientoToMovimientoDto).collect(Collectors.toList());
+        return movimientoRepository.findAll().stream().map(MovimientoMapper.MAPPER::movimientoToMovimientoDto).collect(Collectors.toList());
     }
 
     @Override
     public List<MovimientoDto> reporte(ReporteDto fechas) {
 
         List<Movimientos> movimientos=movimientoRepository.findByFechaBetween(fechas.getFechaInicio(),fechas.getFechaFin());
-        return movimientos.parallelStream().map(MovimientoMapper.MAPPER::movimientoToMovimientoDto).collect(Collectors.toList());
+        return movimientos.stream().map(MovimientoMapper.MAPPER::movimientoToMovimientoDto).collect(Collectors.toList());
     }
 
     private Cuenta getCuenta(Long id){

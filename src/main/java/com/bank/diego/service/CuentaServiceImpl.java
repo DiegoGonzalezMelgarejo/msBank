@@ -72,11 +72,12 @@ public class CuentaServiceImpl implements ICuentaService {
     }
 
     @Override
-    public CuentaDto update(CuentaDto cuentaDto) {
-        Cuenta cuenta=getCuenta(cuentaDto.getCuentaId());
-        Cliente cliente=getCliente(cuentaDto.getCliente().getClienteId());
-         cuenta= CuentaMapper.MAPPER.cuentaDtoToCuenta(cuentaDto);
+    public CuentaDto update(Long id, CreateCuentaDto createCuentaDto) {
+        Cuenta cuenta=getCuenta(id);
+        Cliente cliente=getCliente(createCuentaDto.getClienteId());
+         cuenta= CreateCuentaMapper.MAPPER.createCuentaDtoTocuenta(createCuentaDto);
         cuenta.setCliente(cliente);
+        cuenta.setCuentaId(id);
         try {
             return CuentaMapper.MAPPER.cuentaToCuentaDto(cuentaRepository.save(cuenta));
         }catch (DataIntegrityViolationException e) {

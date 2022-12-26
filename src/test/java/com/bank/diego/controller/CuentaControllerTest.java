@@ -41,7 +41,7 @@ public class CuentaControllerTest {
         MvcResult mvcResult = mockMvc.perform(
                 MockMvcRequestBuilders.get("/cuentas")
                         .contentType(MediaType.APPLICATION_JSON)
-        ).andExpect(status().isOk()0).andReturn();
+        ).andExpect(status().isOk()).andReturn();
 
         int message=mvcResult.getResponse().getStatus();
         Assertions.assertEquals(HttpStatus.OK.value(),message);

@@ -76,8 +76,8 @@ public class CuentaController {
                     @ApiResponse(code=200,message="Request completed successfully")
             }
     )
-    @PatchMapping()
-    public ResponseEntity<?>update(@RequestParam CuentaDto cuenta){
-        return new ResponseEntity<>(cuentaService.update(cuenta),HttpStatus.OK);
+    @PatchMapping("/{id}")
+    public ResponseEntity<?>update(@RequestParam Long id,@RequestBody CreateCuentaDto cuenta){
+        return new ResponseEntity<>(cuentaService.update(id,cuenta),HttpStatus.OK);
     }
 }

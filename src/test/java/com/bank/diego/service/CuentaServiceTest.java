@@ -89,7 +89,7 @@ public class CuentaServiceTest {
         when(cuentaRepository.findById(any())).thenReturn(cuenta);
         when(clienteRepository.findById(any())).thenReturn(cliente);
         when(cuentaRepository.save(any())).thenReturn(getCuenta());
-        CuentaDto cuentaDto= cuentaService.update(getCuentaDto());
+        CuentaDto cuentaDto= cuentaService.update(1l, getCreateCuentaDto());
         Assertions.assertNotNull(cuentaDto);
     }
     @Test
@@ -101,7 +101,7 @@ public class CuentaServiceTest {
         when(cuentaRepository.save(any())).thenReturn(getCuenta());
 
         ClienteException clienteException = Assertions.assertThrows(ClienteException.class, () -> {
-            CuentaDto cuentaDto= cuentaService.update(getCuentaDto());
+            CuentaDto cuentaDto= cuentaService.update(1l, getCreateCuentaDto());
         });
         Assertions.assertNotNull(clienteException);
 
@@ -115,7 +115,7 @@ public class CuentaServiceTest {
         when(cuentaRepository.save(any())).thenReturn(getCuenta());
 
         CuentaException cuentaException = Assertions.assertThrows(CuentaException.class, () -> {
-            CuentaDto cuentaDto= cuentaService.update(getCuentaDto());
+            CuentaDto cuentaDto= cuentaService.update(1l, getCreateCuentaDto());
         });
         Assertions.assertNotNull(cuentaException);
 
